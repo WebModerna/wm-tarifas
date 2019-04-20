@@ -1,4 +1,5 @@
 <?php
+// Protección
 defined('ABSPATH') or die("Bye bye");
 
 // Aparición en el menú de administración
@@ -8,7 +9,10 @@ function wm_menu_admin()
 		'Panel de Tarifas',
 		'Panel de Tarifas',
 		'manage_options',
-		WM_RUTA . ('admin/configuracion.php')
+		WM_RUTA . ('admin/configuracion.php'),
+		'',
+		'dashicons-forms',
+		5
 	);
 }
 add_action( 'admin_menu', 'wm_menu_admin' );

@@ -24,7 +24,7 @@ $constante = "casaflor";
 					<label for="temporada_baja">Título</label>
 					<input type="text" name="temporada_baja" id="temporada_baja" placeholder="temporadita" />
 				</th>
-								<th>
+				<th>
 					<label for="temporada__">Título</label>
 					<input type="text" name="temporada__" id="temporada__" placeholder="temporadita" />
 				</th>
@@ -46,5 +46,10 @@ $constante = "casaflor";
 				</tr>
 			</tbody>
 		</table>
+
+		<div>
+			<hr />
+			<input type="submit" class="button-primary" name="update" value="<?php esc_attr_e( 'Guardar Opciones', 'text_domain' ); ?>" />
+		</div>
 	</form>
 </div>

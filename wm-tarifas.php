@@ -9,15 +9,17 @@ Author URI: //webmoderna.com.ar
 License: GPL
 */
 
-// registración y activación del plugin
-function ejemplo()
+// Registración y activación del plugin
+function wm_panel_de_tarifas()
 {
-	add_option( 'mi_opcion', 255, '', 'yes' );
+	add_option( 'wm_db_panel_opciones', 255, '', 'yes' );
 }
-register_activation_hook( __FILE__, 'ejemplo' );
+register_activation_hook( __FILE__, 'wm_db_panel_opciones' );
 
-// Configuraciones importantes
+// Registro de la variable con la ruta de los archivos
 define( 'WM_RUTA', plugin_dir_path(__FILE__) );
+
+// Incluyendo las funcionalidades
 require_once( WM_RUTA . '/includes/funciones.php' );
 require_once( WM_RUTA . '/includes/opciones.php' ) ;
 
