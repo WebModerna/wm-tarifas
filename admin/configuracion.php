@@ -14,19 +14,30 @@ $constante = "casaflor";
 				<th>Habitaciones o Cabañas</th>
 				<th>
 					<label for="temporada_alta">Título</label>
-					<input class="input-search" type="text" name="temporada_alta" id="temporada_alta" placeholder="temporadita" />
 				</th>
 				<th>
 					<label for="temporada_media">Título</label>
-					<input class="input-search" type="text" name="temporada_media" id="temporada_meida" placeholder="temporadita" />
 				</th>
 				<th>
 					<label for="temporada_baja">Título</label>
-					<input type="text" name="temporada_baja" id="temporada_baja" placeholder="temporadita" />
 				</th>
 				<th>
 					<label for="temporada__">Título</label>
-					<input type="text" name="temporada__" id="temporada__" placeholder="temporadita" />
+				</th>
+				<th>
+					<label for="temporada__">Título</label>
+				</th>
+				<th>
+					<label for="temporada__">Título</label>
+				</th>
+				<th>
+					<label for="temporada__">Título</label>
+				</th>
+				<th>
+					<label for="temporada__">Título</label>
+				</th>
+				<th>
+					<label for="temporada__">Título</label>
 				</th>
 			</thead>
 			<tbody>
@@ -49,7 +60,7 @@ $constante = "casaflor";
 
 		<div>
 			<hr />
-			<input type="submit" class="button-primary" name="update" value="<?php esc_attr_e( 'Guardar Opciones', 'text_domain' ); ?>" />
+			<input type="submit" class="button-primary" value="<?php esc_attr_e( 'Guardar Opciones', 'text_domain' ); ?>" />
 		</div>
 	</form>
 </div>
