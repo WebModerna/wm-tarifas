@@ -60,7 +60,11 @@ $constante = "casaflor";
 
 		<div>
 			<hr />
-			<input type="submit" class="button-primary" value="<?php esc_attr_e( 'Guardar Opciones', 'text_domain' ); ?>" />
+			<input type="submit" id="guardar" class="button button-primary" value="<?php esc_attr_e( 'Guardar', 'text_domain' ); ?>" />
+			<button class="button button-primary" id="borrar" type="reset">
+				<i class="dashicons-before dashicons-forms"></i>
+				<?php esc_attr_e( 'Borrar', 'text_domain' ); ?>
+			</button>
 		</div>
 	</form>
 </div>

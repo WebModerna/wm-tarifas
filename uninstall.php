@@ -7,11 +7,9 @@ if ( !defined( 'WP_UNINSTALL_PLUGIN' ) )
 {
 	die;
 }
-else
-{
-	// Borrando las entradas creadas en las tablas
-	delete_option('wm_db_panel_opciones');
-	delete_site_option('wm_db_panel_opciones');
-}
+
+// Borrando las entradas creadas en las tablas
+delete_option('wm_db_panel_opciones');
+delete_site_option('wm_db_panel_opciones');
 
 ?>

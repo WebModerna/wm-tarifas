@@ -12,6 +12,7 @@ License: GPL
 // Registración y activación del plugin
 function wm_panel_de_tarifas()
 {
+	// Creación de una opción en la tabla _options
 	add_option( 'wm_db_panel_opciones', 255, '', 'yes' );
 }
 register_activation_hook( __FILE__, 'wm_db_panel_opciones' );
