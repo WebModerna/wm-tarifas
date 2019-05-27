@@ -9,13 +9,16 @@ Author URI: //webmoderna.com.ar
 License: GPL
 */
 
+// Brindando seguridad al plugin
+defined('ABSPATH') or die("Bye bye");
+
 // Registración y activación del plugin
 function wm_panel_de_tarifas()
 {
 	// Creación de una opción en la tabla _options
 	add_option( 'wm_db_panel_opciones', 255, '', 'yes' );
 }
-register_activation_hook( __FILE__, 'wm_db_panel_opciones' );
+register_activation_hook( __FILE__, 'wm_panel_de_tarifas' );
 
 // Registro de la variable con la ruta de los archivos
 define( 'WM_RUTA', plugin_dir_path(__FILE__) );
