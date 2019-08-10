@@ -11,6 +11,7 @@
 		function wm_edicion()
 		{
 			$("#boton_editar_titulo").on("click", puchito);
+			$(".boton_editar").on("click", puchito2);
 
 			function puchito()
 			{
@@ -24,7 +25,15 @@
 					console.log("lo deshabilite");
 					$(".room_title").attr("disabled", true);
 				}
-			};
+			}
+			function puchito2()
+			{
+				if( $(".campos_tarifas").attr("disabled", true) )
+				{
+					$(".campos_tarifas").attr("disabled", false);
+					console.log("lo habilite");
+				}
+			}
 		}
 	});
 }())

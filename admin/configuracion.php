@@ -49,7 +49,7 @@ Se debe poder editar los títulos como el contenido de las celdas. Todo será un
 
 				<tr class="tarifa_fila">
 					<td>
-						<input type="text" min="0" value="" placeholder="Habitación xxx" name="titulo1" id="titulo1" disabled="disabled" />
+						<input class="campos_tarifas" type="text" min="0" value="" placeholder="Habitación xxx" name="titulo1" id="titulo1" disabled="disabled" />
 						<!-- <select name="page-dropdown"> 
 							<option value="">
 								<?php //echo esc_attr( __( 'Seleccionar', 'text_domain' ) ); ?>
@@ -70,9 +70,9 @@ Se debe poder editar los títulos como el contenido de las celdas. Todo será un
 							?>
 						</select> -->
 					</td>
-					<td>$ <input type="number" min="0" value="" placeholder="300" name="" id="" disabled="disabled" /></td>
-					<td>$ <input type="number" min="0" value="" placeholder="300" name="" id="" disabled="disabled" /></td>
-					<td>$ <input type="number" min="0" value="" placeholder="300" name="" id="" disabled="disabled" /></td>
+					<td>$ <input class="campos_tarifas" type="number" min="0" value="" placeholder="300" name="" id="" disabled="disabled" /></td>
+					<td>$ <input class="campos_tarifas" type="number" min="0" value="" placeholder="300" name="" id="" disabled="disabled" /></td>
+					<td>$ <input class="campos_tarifas" type="number" min="0" value="" placeholder="300" name="" id="" disabled="disabled" /></td>
 					<td>
 						<div class="botones_edicion">
 							<a href="#"><span class="dashicons-before dashicons-plus"></span></a>
