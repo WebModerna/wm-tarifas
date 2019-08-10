@@ -1,2 +1,2 @@
 // Mis scripts administrativos
-alert("hola");
+console.log('probando la cargad de este plugin');

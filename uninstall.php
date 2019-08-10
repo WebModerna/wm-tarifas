@@ -12,4 +12,13 @@ if ( !defined( 'WP_UNINSTALL_PLUGIN' ) )
 delete_option('wm_db_panel_opciones');
 delete_site_option('wm_db_panel_opciones');
 
+// Borrando la tabla
+function wm_desinstala()
+{
+	global $wpdb; 
+	$table_nombre	= $wpdb->prefix . "wm_tarifas";
+	$sql 			= "DROP TABLE $table_nombre";
+	$wpdb->query( $sql );
+}
+register_deactivation_hook( __FILE__, 'wm_desinstala');
 ?>

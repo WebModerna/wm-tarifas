@@ -9,7 +9,7 @@ function wm_tarifas_estilos_scripts()
 	wp_enqueue_style( 'wm_tarifa_estilo' );
 	
 	// Registrando los scrips personalizados
-	wp_register_script( 'wm_tarifa_script', plugins_url( '../admin/js/wp_admin.js', __FILE__ ), array('jquery'), 'wp_foot', true );
+	wp_register_script( 'wm_tarifa_script', plugins_url( '../admin/js/wm_admin.js', __FILE__ ), array('jquery'), 'wp_foot', true );
 	wp_enqueue_script( 'wm_tarifa_script' );
 }
 add_action( 'admin_enqueue_scripts', 'wm_tarifas_estilos_scripts' );
