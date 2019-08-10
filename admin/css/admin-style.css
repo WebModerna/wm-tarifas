@@ -1,1 +1,10 @@
 /* Estilos personalizados de las planilla de tarifas en el panel de administración */
+.room_title.deshabilitado
+{
+	color: red;
+	background: rgba(250,13,18,0.5) !important;
+}
+input.campos_tarifas
+{
+	height: 50px;
+}

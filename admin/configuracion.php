@@ -21,24 +21,23 @@ Se debe poder editar los títulos como el contenido de las celdas. Todo será un
 		<h1><?php _e( 'Planilla de Tarifas y Temporadas', 'text_domain' ) ?></h1>
 	</header>
 	<form action="opciones.php" method="post" id="wm_tarifazos">
-		<table class="form-table striped">
+		<table class="">
 			<caption>
 				<h3><?php _e('Agregar aquí los nombres de las temporadas ↓', 'text_domain');?></h3>
 			</caption>
 			<tbody>
-
 				<tr>
-					<th class="column-title">
-						<input class="room_title" disabled type="text" name="habit" id="habit" placeholder="<?php _e('Habitaciones o Cabañas', 'text_domain');?>" />
+					<th class="">
+						<h4><?php _e('Habitaciones o Cabañas ↓', 'text_domain');?></h4>
 					</th>
 					<th>
-						<input class="room_title" disabled type="text" name="temp_1" id="temp_1" placeholder="<?php _e('Temporada Alta', 'text_domain');?>" />
+						<input class="room_title deshabilitado" disabled type="text" name="temp_1" id="temp_1" placeholder="<?php _e('Temporada Alta', 'text_domain');?>" />
 					</th>
 					<th>
-						<input class="room_title" disabled type="text" name="temp_2" id="temp_2" placeholder="<?php _e('Temporada Media', 'text_domain');?>" />
+						<input class="room_title deshabilitado" disabled type="text" name="temp_2" id="temp_2" placeholder="<?php _e('Temporada Media', 'text_domain');?>" />
 					</th>
 					<th>
-						<input class="room_title" disabled type="text" name="temp_3" id="temp_3" placeholder="<?php _e('Temporada Baja', 'text_domain');?>" />
+						<input class="room_title deshabilitado" disabled type="text" name="temp_3" id="temp_3" placeholder="<?php _e('Temporada Baja', 'text_domain');?>" />
 					</th>
 					<th>
 						<div class="botones_edicion">

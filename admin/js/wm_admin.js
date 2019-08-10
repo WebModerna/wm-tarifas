@@ -15,16 +15,17 @@
 
 			function puchito()
 			{
-				if( $(".room_title").attr("disabled", true) )
-				{
-					$(".room_title").attr("disabled", false);
+				// if( $(".room_title").attr("disabled", true) )
+				// {
+					$(".room_title").attr("disabled", false).toggle();
+					$(".room_title").removeClass("disabled").toggle();
 					console.log("lo habilite");
-				}
-				else
+				// }
+				/*else
 				{
 					console.log("lo deshabilite");
 					$(".room_title").attr("disabled", true);
-				}
+				}*/
 			}
 			function puchito2()
 			{
