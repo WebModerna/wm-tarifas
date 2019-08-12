@@ -4,7 +4,8 @@
 	color: red;
 	background: rgba(250,13,18,0.5) !important;
 }
-input.campos_tarifas
+input.campos_tarifas,
+input.room_title
 {
 	height: 50px;
 }

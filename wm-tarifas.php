@@ -64,9 +64,24 @@ function crear_base()
 	// Creamos la tabla
 	dbDelta($sql);
 }
-// Ejecutamos nuestra funcion en WordPress
 add_action('wp', 'crear_base');
 
+
+// Ejecutamos nuestra funcion en WordPress
+function insertar_wpdb()
+{
+	global $wpdb;
+	$table_name = $wpdb->prefix . 'tarifazos';
+	$wpdb->insert( $table_name, 
+		array( 
+			'habitaciones'	=> 'Suite', 
+			'temporada' 	=> 'Ni idea',
+			'tarifa'		=> 4590 
+		)
+	);
+}
+// Ejecutamos nuestro funcion en WordPress
+add_action('wp', 'insertar_wpdb');
 
 // Registro de la variable con la ruta de los archivos
 define( 'WM_RUTA', plugin_dir_path( __FILE__ ) );

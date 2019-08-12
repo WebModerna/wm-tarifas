@@ -17,9 +17,8 @@
 			{
 				// if( $(".room_title").attr("disabled", true) )
 				// {
-					$(".room_title").attr("disabled", false).toggle();
-					$(".room_title").removeClass("disabled").toggle();
-					console.log("lo habilite");
+					// $(".room_title").attr("disabled", false).toggle();
+					// $(".room_title").removeClass("disabled").toggle();
 				// }
 				/*else
 				{
@@ -29,11 +28,9 @@
 			}
 			function puchito2()
 			{
-				if( $(".campos_tarifas").attr("disabled", true) )
-				{
-					$(".campos_tarifas").attr("disabled", false);
-					console.log("lo habilite");
-				}
+				// $(".campos_tarifas").toggle("disabled");
+				$(".campos_tarifas").attr('contenteditable', $(this).attr('contenteditable')==='true'?'false':'true' );
+				console.log("lo habilite");
 			}
 		}
 	});
