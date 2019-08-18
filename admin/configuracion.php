@@ -21,34 +21,39 @@ Se debe poder editar los títulos como el contenido de las celdas. Todo será un
 		<h1><?php _e( 'Planilla de Tarifas y Temporadas', 'text_domain' ) ?></h1>
 	</header>
 	<form action="opciones.php" method="post" id="wm_tarifazos">
-		<table class="">
+		<table class="tabla_tarifas">
 			<caption>
 				<h3><?php _e('Agregar aquí los nombres de las temporadas ↓', 'text_domain');?></h3>
 			</caption>
-			<tbody>
-				<tr>
-					<th class="">
+			<thead class="tabla_tarifas__encabezado">
+				<tr class="tabla_tarifas__fila">
+					<th class="tabla_tarifas__fila__encabezado">
 						<h4><?php _e('Habitaciones o Cabañas ↓', 'text_domain');?></h4>
 					</th>
-					<th>
-						<input class="room_title deshabilitado" disabled type="text" name="temp_1" id="temp_1" placeholder="<?php _e('Temporada Alta', 'text_domain');?>" />
+					<th class="tabla_tarifas__fila__encabezado">
+						<input class="tabla_tarifas__input deshabilitado" type="text" name="temp_1" id="temp_1" placeholder="<?php _e('Temporada AltÍSIMA', 'text_domain');?>" />
 					</th>
-					<th>
-						<input class="room_title deshabilitado" disabled type="text" name="temp_2" id="temp_2" placeholder="<?php _e('Temporada Media', 'text_domain');?>" />
+					<th class="tabla_tarifas__fila__encabezado">
+						<input class="tabla_tarifas__input deshabilitado" disabled type="text" name="temp_1" id="temp_1" placeholder="<?php _e('Temporada Alta', 'text_domain');?>" />
 					</th>
-					<th>
-						<input class="room_title deshabilitado" disabled type="text" name="temp_3" id="temp_3" placeholder="<?php _e('Temporada Baja', 'text_domain');?>" />
+					<th class="tabla_tarifas__fila__encabezado">
+						<input class="tabla_tarifas__input deshabilitado" disabled type="text" name="temp_2" id="temp_2" placeholder="<?php _e('Temporada Media', 'text_domain');?>" />
 					</th>
-					<th>
+					<th class="tabla_tarifas__fila__encabezado">
+						<input class="tabla_tarifas__input deshabilitado" disabled type="text" name="temp_3" id="temp_3" placeholder="<?php _e('Temporada Baja', 'text_domain');?>" />
+					</th>
+					<th class="tabla_tarifas__fila__encabezado">
 						<div class="botones_edicion">
-							<a href="#" id="boton_editar_titulo"><span class="dashicons-before dashicons-edit"></span></a>
+							<a href="#" class="tabla_tarifa__boton_editar_titulo"><span class="dashicons-before dashicons-edit"></span></a>
 						</div>
 					</th>
 				</tr>
+			</thead>
 
-				<tr class="tarifa_fila">
+			<tbody class="tabla_tarifas__cuerpo">
+				<tr class="tabla_tarifas__cuerpo__fila">
 					<td>
-						<input class="campos_tarifas" type="text" min="0" value="" placeholder="Habitación xxx" name="titulo1" id="titulo1" disabled="disabled" />
+						<input class="tabla_tarifas__campo__texto" type="text" min="0" value="" placeholder="Habitación xxx" name="titulo1" disabled id="titulo1" />
 						<!-- <select name="page-dropdown"> 
 							<option value="">
 								<?php //echo esc_attr( __( 'Seleccionar', 'text_domain' ) ); ?>
@@ -69,14 +74,47 @@ Se debe poder editar los títulos como el contenido de las celdas. Todo será un
 							?>
 						</select> -->
 					</td>
-					<td>$ <input class="campos_tarifas" type="number" min="0" value="" placeholder="300" name="" id="" disabled="disabled" /></td>
-					<td>$ <input class="campos_tarifas" type="number" min="0" value="" placeholder="300" name="" id="" disabled="disabled" /></td>
-					<td>$ <input class="campos_tarifas" type="number" min="0" value="" placeholder="300" name="" id="" disabled="disabled" /></td>
+					<td><input class="tabla_tarifas__campo__numero" type="number" min="0" value="" placeholder="300" name="" id="" disabled /></td>
+					<td><input class="tabla_tarifas__campo__numero" type="number" min="0" value="" placeholder="300" name="" id="" disabled /></td>
+					<td><input class="tabla_tarifas__campo__numero" type="number" min="0" value="" placeholder="300" name="" id="" disabled /></td>
+					<td><input class="tabla_tarifas__campo__numero" type="number" min="0" value="" placeholder="300" name="" id="" disabled /></td>
 					<td>
 						<div class="botones_edicion">
-							<a href="#"><span class="dashicons-before dashicons-plus"></span></a>
-							<a href="#" class="boton_editar"><span class="dashicons-before dashicons-edit"></span></a>
-							<a href="#"><span class="dashicons-before dashicons-trash"></span></a>
+							<a href="#" class="tabla_tarifa__boton_agregar_fila"><span class="dashicons-before dashicons-plus"></span></a>
+							<a href="#" class="tabla_tarifa__boton_editar_fila"><span class="dashicons-before dashicons-edit"></span></a>
+							<a href="#" class="tabla_tarifa__boton_borrar_fila"><span class="dashicons-before dashicons-trash"></span></a>
+						</div>
+					</td>
+				</tr>
+				<tr class="tabla_tarifas__cuerpo__fila">
+					<td>
+						<input class="tabla_tarifas__campo__texto" disabled type="text" min="0" value="" placeholder="Habitación xxx" name="titulo1" id="titulo1" />
+					</td>
+					<td><input class="tabla_tarifas__campo__numero" type="number" min="0" value="" placeholder="300" name="" id="" disabled /></td>
+					<td><input class="tabla_tarifas__campo__numero" type="number" min="0" value="" placeholder="300" name="" id="" disabled /></td>
+					<td><input class="tabla_tarifas__campo__numero" type="number" min="0" value="" placeholder="300" name="" id="" disabled /></td>
+					<td><input class="tabla_tarifas__campo__numero" type="number" min="0" value="" placeholder="300" name="" id="" disabled /></td>
+					<td>
+						<div class="botones_edicion">
+							<a href="#" class="tabla_tarifa__boton_agregar_fila"><span class="dashicons-before dashicons-plus"></span></a>
+							<a href="#" class="tabla_tarifa__boton_editar_fila"><span class="dashicons-before dashicons-edit"></span></a>
+							<a href="#" class="tabla_tarifa__boton_borrar_fila"><span class="dashicons-before dashicons-trash"></span></a>
+						</div>
+					</td>
+				</tr>
+								<tr class="tabla_tarifas__cuerpo__fila">
+					<td>
+						<input class="tabla_tarifas__campo__texto" disabled type="text" min="0" value="" placeholder="Habitación xxx" name="titulo1" id="titulo1" />
+					</td>
+					<td><input class="tabla_tarifas__campo__numero" type="number" min="0" value="" placeholder="300" name="" id="" disabled /></td>
+					<td><input class="tabla_tarifas__campo__numero" type="number" min="0" value="" placeholder="300" name="" id="" disabled /></td>
+					<td><input class="tabla_tarifas__campo__numero" type="number" min="0" value="" placeholder="300" name="" id="" disabled /></td>
+					<td><input class="tabla_tarifas__campo__numero" type="number" min="0" value="" placeholder="300" name="" id="" disabled /></td>
+					<td>
+						<div class="botones_edicion">
+							<a href="#" class="tabla_tarifa__boton_agregar_fila"><span class="dashicons-before dashicons-plus"></span></a>
+							<a href="#" class="tabla_tarifa__boton_editar_fila"><span class="dashicons-before dashicons-edit"></span></a>
+							<a href="#" class="tabla_tarifa__boton_borrar_fila"><span class="dashicons-before dashicons-trash"></span></a>
 						</div>
 					</td>
 				</tr>
@@ -90,6 +128,10 @@ Se debe poder editar los títulos como el contenido de las celdas. Todo será un
 			<hr />
 			<input type="submit" name="enviar"  value="<?php _e("Guardar Opciones", "text-domain");?>" class="button-primary" id="submit" />
 			<input type="reset" class="reset-button button-secondary" name="reset" value="<?php esc_attr_e( 'Restaurar valores por defecto', 'text_domain' ); ?>" onclick="return confirm( '<?php print esc_js( __( 'Click OK para resetear. Cualquier cambio hecho se perderá!', 'text_domain' ) ); ?>' );" />
+
+			<a href="#" class="tabla_tarifa__boton_agregar_fila"><span class="dashicons-before dashicons-plus"></span></a>
+			<a href="#" class="tabla_tarifa__boton_editar_fila"><span class="dashicons-before dashicons-edit"></span></a>
+			<a href="#" class="tabla_tarifa__boton_borrar_fila"><span class="dashicons-before dashicons-trash"></span></a>
 			<div class="clear"></div>
 		</div>
 	</form>

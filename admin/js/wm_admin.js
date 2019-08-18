@@ -10,28 +10,12 @@
 
 		function wm_edicion()
 		{
-			$("#boton_editar_titulo").on("click", puchito);
-			$(".boton_editar").on("click", puchito2);
-
-			function puchito()
+			$(".tabla_tarifas__campo__numero").prop("disabled", true);
+			$(".tabla_tarifa__boton_editar_fila").on("click", function(e)
 			{
-				// if( $(".room_title").attr("disabled", true) )
-				// {
-					// $(".room_title").attr("disabled", false).toggle();
-					// $(".room_title").removeClass("disabled").toggle();
-				// }
-				/*else
-				{
-					console.log("lo deshabilite");
-					$(".room_title").attr("disabled", true);
-				}*/
-			}
-			function puchito2()
-			{
-				// $(".campos_tarifas").toggle("disabled");
-				$(".campos_tarifas").attr('contenteditable', $(this).attr('contenteditable')==='true'?'false':'true' );
-				console.log("lo habilite");
-			}
+				e.preventDefault;
+				$(".tabla_tarifas__campo__numero").prop("disabled", false);
+			});
 		}
 	});
 }())

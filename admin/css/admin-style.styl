@@ -1,0 +1,37 @@
+/* Estilos personalizados de las planilla de tarifas en el panel de administración */
+.room_title.deshabilitado
+	color red
+	background rgba(250,13,18,0.5) !important
+
+input
+	.campos_tarifas
+	.room_title
+		height 50px
+
+.tabla_tarifas
+	border 1px solid #aaa
+	max-width 100% !important
+	width 100%
+	
+	.tabla_tarifas__fila
+		&__encabezado
+			background #fff
+		
+			.tabla_tarifas__input
+				font-family monospace
+				font-size 18px
+				text-align center
+				height 50px
+				width 100%
+	
+	.tabla_tarifas
+		&__cuerpo
+			&__fila
+				&:nth-child(even)
+					background-color #ccc
+				td
+					input
+						font-size 18px
+						height 50px
+						text-align right
+						width 100%
