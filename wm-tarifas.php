@@ -38,50 +38,62 @@ Hay que hacer varias cosas y solucionar varios aspectos a tener en cuenta
 
 // Brindando seguridad al plugin
 defined('ABSPATH') or die("Bye bye");
-
+add_option( "jal_db_version", "1.0" );
 
 /****************** Crear tabla con la clase wpdb *****************/
-function crear_base()
+global $jal_db_version;
+$jal_db_version = '1.0';
+
+function jal_install()
 {
 	global $wpdb;
+	global $jal_db_version;
 
-	// Con esto creamos el nombre de la tabla y nos aseguramos que se cree con el mismo prefijo que ya tienen las otras tablas creadas (wp_form).
 	$table_name = $wpdb->prefix . 'tarifazos';
+	
+	$charset_collate = $wpdb->get_charset_collate();
 
-	// Declaramos la tabla que se creará de la forma común.
 	$sql = "CREATE TABLE $table_name (
-		`id` int(11) NOT NULL AUTO_INCREMENT,
-		`habitaciones` varchar(255) NOT NULL,
-		`temporada` varchar(255) NOT NULL,
-		`tarifa` int(22) NOT NULL,
-		UNIQUE KEY id (id)
-	);";
+		id mediumint(11) NOT NULL AUTO_INCREMENT,
+		habit tinytext NOT NULL,
+		temp_altisima tinytext NOT NULL,
+		temp_alta tinytext NOT NULL,
+		temp_media tinytext NOT NULL,
+		temp_baja tinytext NOT NULL,
+		PRIMARY KEY (id)
+	) $charset_collate;";
 
-
-	// upgrade contiene la función dbDelta la cuál revisará si existe la tabla.
 	require_once( ABSPATH . 'wp-admin/includes/upgrade.php' );
+	dbDelta( $sql );
 
-	// Creamos la tabla
-	dbDelta($sql);
+	add_option( 'jal_db_version', $jal_db_version );
 }
-add_action('wp', 'crear_base');
 
-
-// Ejecutamos nuestra funcion en WordPress
-function insertar_wpdb()
+function jal_install_data()
 {
 	global $wpdb;
+	$habitaciones 			= "Suite no tan Premium";
+	$temporadas_altisimas 	= 9999;
+	$temporadas_altas 		= 800;
+	$temporadas_medias 		= 4.5;
+	$temporadas_bajas 		= -1.3;
+	
 	$table_name = $wpdb->prefix . 'tarifazos';
-	$wpdb->insert( $table_name, 
-		array( 
-			'habitaciones'	=> 'Suite', 
-			'temporada' 	=> 'Ni idea',
-			'tarifa'		=> 4590 
+	
+	$wpdb->insert(
+		$table_name,
+		array(
+			'habit' 		=> $habitaciones,
+			'temp_altisima' => $temporadas_altisimas,
+			'temp_alta' 	=> $temporadas_altas,
+			'temp_media' 	=> $temporadas_medias,
+			'temp_baja' 	=> $temporadas_bajas
 		)
 	);
 }
-// Ejecutamos nuestro funcion en WordPress
-add_action('wp', 'insertar_wpdb');
+
+register_activation_hook( __FILE__, 'jal_install' );
+register_activation_hook( __FILE__, 'jal_install_data' );
 
 // Registro de la variable con la ruta de los archivos
 define( 'WM_RUTA', plugin_dir_path( __FILE__ ) );
