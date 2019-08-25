@@ -1,7 +1,8 @@
 // Mis scripts administrativos
 (function()
 {
-	jQuery(document).ready(function($){
+	jQuery(document).ready(function($)
+	{
 		//you can now use $ as your jQuery object.
 		var body = $( 'body' );
 		
@@ -22,7 +23,7 @@
 			datulis.prop("disabled", true);
 
 
-			boton_edicion.on("click", edicion )
+			boton_edicion.on( "click", edicion )
 			function edicion(ev)
 			{
 				ev.preventDefault();
@@ -47,9 +48,7 @@
 						boton_edicion.on("click", edicion);
 					}
 				}
-
 			};
-
 		}
 	});
 }())
