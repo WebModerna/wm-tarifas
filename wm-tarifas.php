@@ -38,12 +38,13 @@ Hay que hacer varias cosas y solucionar varios aspectos a tener en cuenta
 
 // Brindando seguridad al plugin
 defined('ABSPATH') or die("Bye bye");
-add_option( "jal_db_version", "1.0" );
+
 
 /****************** Crear tabla con la clase wpdb *****************/
 global $jal_db_version;
 $jal_db_version = '1.0';
 
+// Creación de la tabla
 function jal_install()
 {
 	global $wpdb;
@@ -69,9 +70,12 @@ function jal_install()
 	add_option( 'jal_db_version', $jal_db_version );
 }
 
+// Creación de primeros datos
 function jal_install_data()
 {
 	global $wpdb;
+
+	// Datos de ejemplos ilustrativos
 	$habitaciones 			= "Suite no tan Premium";
 	$temporadas_altisimas 	= 9999;
 	$temporadas_altas 		= 800;
@@ -93,7 +97,45 @@ function jal_install_data()
 }
 
 register_activation_hook( __FILE__, 'jal_install' );
-register_activation_hook( __FILE__, 'jal_install_data' );
+// register_activation_hook( __FILE__, 'jal_install_data' );
+
+// Control de actualización del plugin
+global $wpdb;
+$installed_ver = get_option( "jal_db_version" );
+
+if ( $installed_ver != $jal_db_version )
+{
+
+	$table_name = $wpdb->prefix . 'tarifazos';
+	
+	$charset_collate = $wpdb->get_charset_collate();
+
+	$sql = "CREATE TABLE $table_name (
+		id mediumint(11) NOT NULL AUTO_INCREMENT,
+		habit tinytext NOT NULL,
+		temp_altisima tinytext NOT NULL,
+		temp_alta tinytext NOT NULL,
+		temp_media tinytext NOT NULL,
+		temp_baja tinytext NOT NULL,
+		PRIMARY KEY (id)
+	) $charset_collate;";
+
+	require_once( ABSPATH . 'wp-admin/includes/upgrade.php' );
+	dbDelta( $sql );
+
+	update_option( "jal_db_version", $jal_db_version );
+}
+
+// Controlando si hay nueva versión
+function myplugin_update_db_check()
+{
+    global $jal_db_version;
+    if ( get_site_option( 'jal_db_version' ) != $jal_db_version )
+    {
+        jal_install();
+    }
+}
+add_action( 'plugins_loaded', 'myplugin_update_db_check' );
 
 // Registro de la variable con la ruta de los archivos
 define( 'WM_RUTA', plugin_dir_path( __FILE__ ) );

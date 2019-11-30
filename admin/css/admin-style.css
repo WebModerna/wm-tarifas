@@ -1,6 +1,5 @@
 /* Estilos personalizados de las planilla de tarifas en el panel de administración */
 .tabla_tarifas {
-  border: 1px solid #aaa;
   max-width: 100% !important;
   width: 100%;
 }
@@ -9,11 +8,13 @@
 }
 .tabla_tarifas .tabla_tarifas__fila__encabezado .tabla_tarifas__input {
   background: transparent;
+  border: none;
   color: #999;
   font-family: monospace;
   font-size: 18px;
-  text-align: right;
   height: 50px;
+  margin: 0;
+  text-align: center;
   width: 100%;
 }
 .tabla_tarifas .tabla_tarifas__fila__encabezado .tabla_tarifas__input__habilitado {
@@ -23,13 +24,14 @@
 .tabla_tarifas .tabla_tarifas__cuerpo__fila:nth-child(even) {
   background-color: #ccc;
 }
+.tabla_tarifas .tabla_tarifas__cuerpo__fila td {
+  border: none;
+}
 .tabla_tarifas .tabla_tarifas__cuerpo__fila td input {
+  border: none;
   font-size: 18px;
   height: 50px;
-  text-align: right;
+  margin: 0;
   width: 100%;
-}
-.tabla_tarifas .tabla_tarifas__cuerpo__fila td input::placeholder {
-  padding-right: 18px;
 }
 /*# sourceMappingURL=admin-style.css.map */
