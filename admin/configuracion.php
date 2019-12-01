@@ -2,15 +2,12 @@
 // Protección del plugin
 defined('ABSPATH') or die("Bye bye");
 
+
 // Protección con editores no autorizados.
 if (! current_user_can ('manage_options')) wp_die (__ ('No tienes suficientes permisos para acceder a esta página.', 'text_domain'));
 
 // Variables
-/*$titulo_1 = $_POST['titulo_1'];
-$tarifa_1 = $_POST['tarifa_1'];
-$tarifa_2 = $_POST['tarifa_2'];
-$tarifa_3 = $_POST['tarifa_3'];
-$tarifa_4 = $_POST['tarifa_4'];*/
+/**/
 
 // Función que cargará los datos en la base de datos y chequeará si hay cargados.
 
@@ -18,21 +15,20 @@ $tarifa_4 = $_POST['tarifa_4'];*/
 global $wpdb;
 
 // Si viene del formulario  graba en la base de datos
-if (
-		$_POST['titulo_1'] != ""
-		AND $_POST['tarifa_1'] != ""
-		AND $_POST['tarifa_2'] != ""
-		AND $_POST['tarifa_3'] != ""
-		AND $_POST['tarifa_4'] != ""
-		AND wp_verify_nonce($_POST['wm_tarifazos_nonce'], 'graba_awm_tarifazos')
+if (!empty($_POST)
+		&& $_POST['titulo_1'] != ""
+		&& $_POST['tarifa_1'] != ""
+		&& $_POST['tarifa_2'] != ""
+		&& $_POST['tarifa_3'] != ""
+		&& $_POST['tarifa_4'] != ""
 	)
 {
 	$table_name = $wpdb->prefix . 'tarifazos';
-	$titulo_1 	= $_POST['titulo_1'];
-	$tarifa_1 	= $_POST['tarifa_1'];
-	$tarifa_2 	= $_POST['tarifa_2'];
-	$tarifa_3 	= $_POST['tarifa_3'];
-	$tarifa_4 	= $_POST['tarifa_4'];
+	$titulo_1 = sanitize_text_field($_POST['titulo_1']);
+	$tarifa_1 = (int) $_POST['tarifa_1'];
+	$tarifa_2 = (int) $_POST['tarifa_2'];
+	$tarifa_3 = (int) $_POST['tarifa_3'];
+	$tarifa_4 = (int) $_POST['tarifa_4'];
 
 	$wpdb->insert(
 		$table_name,
@@ -41,7 +37,7 @@ if (
 			'temp_altisima' => $tarifa_1,
 			'temp_alta' 	=> $tarifa_2,
 			'temp_media' 	=> $tarifa_3,
-			'temp_baja' 	=> $tarifa_4
+			'temp_baja' 	=> $tarifa_4,
 		)
 	);
 	echo "<p class='exito'><b>Tus datos han sido registrados</b>. Gracias por tu interés. En breve contactaré contigo.<p>";
@@ -49,7 +45,7 @@ if (
 
 /* Esta función de PHP activa el almacenamiento en búfer de salida (output buffer)
 Cuando termine el formulario lo imprime con la función ob_get_clean */
-// ob_start();
+ob_start();
 
 ?>
 <div class="wrap">
@@ -57,7 +53,12 @@ Cuando termine el formulario lo imprime con la función ob_get_clean */
 		<h1><?php _e( 'Planilla de Tarifas y Temporadas', 'text_domain' ) ?></h1>
 	</header>
 	<form action="<?php get_the_permalink();?>" method="post" id="wm_tarifazos">
-		<?php wp_nonce_field('graba_wm_tarifazos', 'wm_tarifazos_nonce'); ?>
+		<?php
+
+		// Función de seguridad del plugin
+		wp_nonce_field('graba_wm_tarifazos', 'wm_tarifazos_nonce');
+
+		?>
 		<table class="tabla_tarifas">
 			<caption>
 				<h3>
@@ -89,9 +90,19 @@ Cuando termine el formulario lo imprime con la función ob_get_clean */
 			</thead>
 
 			<tbody class="tabla_tarifas__cuerpo">
+				<?php /*foreach ($resultados as $resultadito)
+			{
+				$id 		= esc_textarea($resultadito->id);
+				$titulo_1 	= esc_textarea($resultadito->habit);
+				$tarifa_1 	= esc_textarea($resultadito->temp_altisima);
+				$tarifa_2 	= esc_textarea($resultadito->temp_alta);
+				$tarifa_3 	= esc_textarea($resultadito->temp_media);
+				$tarifa_4 	= esc_textarea($resultadito->temp_baja);*/
+
+				?>
 				<tr class="tabla_tarifas__cuerpo__fila" id="tabla_tarifas__cuerpo__fila_1">
 					<td class="tabla_tarifas__cuerpo__habitacion">
-						<input class="tabla_tarifas__campo__texto" type="text" min="0" value="" placeholder="..." name="titulo_1" disabled id="titulo_1" /> 
+						<input class="tabla_tarifas__campo__texto" type="text" min="0" value="<?php $titulo_1;?>" placeholder="..." name="titulo_1" /> 
 						<!-- <select name="page-dropdown">
 							<option value=""> -->
 								<?php // echo esc_attr( __( 'Seleccionar', 'text_domain' ) ); ?>
@@ -108,24 +119,26 @@ Cuando termine el formulario lo imprime con la función ob_get_clean */
 								echo $option;
 							}*/
 							?>
-						</select>
+						<!-- </select> -->
 					</td>
 					<td>
-						<input class="tabla_tarifas__campo__numero" type="number" min="0" value="" placeholder="100" name="tarifa_1" id="tarifa_1" disabled value="" />
+						<input class="tabla_tarifas__campo__numero" type="number" min="0" value="<?php $tarifa_1;?>" placeholder="100" name="tarifa_1" />
 					</td>
 					<td>
-						<input class="tabla_tarifas__campo__numero" type="number" min="0" value="" placeholder="100" name="tarifa_2" id="tarifa_2" disabled />
+						<input class="tabla_tarifas__campo__numero" type="number" min="0" value="<?php $tarifa_2;?>" placeholder="100" name="tarifa_2" />
 					</td>
 					<td>
-						<input class="tabla_tarifas__campo__numero" type="number" min="0" value="" placeholder="100" name="tarifa_3" id="tarifa_3" disabled />
+						<input class="tabla_tarifas__campo__numero" type="number" min="0" value="<?php $tarifa_3;?>" placeholder="100" name="tarifa_3" />
 					</td>
 					<td>
-						<input class="tabla_tarifas__campo__numero" type="number" min="0" value="" placeholder="100" name="tarifa_4" id="tarifa_4" disabled />
+						<input class="tabla_tarifas__campo__numero" type="number" min="0" value="<?php $tarifa_4;?>" placeholder="100" name="tarifa_4" />
 					</td>
 				</tr>
+			<?php
+			//};?>
 			</tbody>
 		</table>
-
+		<?php //} ?>
 		<div class="clear"></div>
 
 		<div class="wrap">

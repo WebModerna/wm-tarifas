@@ -1,4 +1,4 @@
-// Mis scripts administrativos
+/*// Mis scripts administrativos
 (function()
 {
 	jQuery(document).ready(function($)
@@ -55,4 +55,4 @@
 			};
 		}
 	});
-}())
+}())*/
