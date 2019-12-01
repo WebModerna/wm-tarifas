@@ -12,6 +12,7 @@
 		function wm_edicion()
 		{
 			// variables de titulares
+			let listado_habit 		= $(".tabla_tarifas__cuerpo__habitacion select");
 			let titular_columnas 	= $(".tabla_tarifas__input");
 			let titular_filas 		= $(".tabla_tarifas__campo__texto");
 			let datulis 			= $(".tabla_tarifas__campo__numero");
@@ -19,6 +20,7 @@
 			
 			// Edición de los titulares
 			titular_columnas.prop("disabled", true);
+			listado_habit.prop("disabled", true);
 			titular_filas.prop("disabled", true);
 			datulis.prop("disabled", true);
 
@@ -30,6 +32,7 @@
 				if( titular_columnas.hasAttribute != "disabled" )
 				{
 					titular_columnas.prop("disabled", false);
+					listado_habit.prop("disabled", false);
 					datulis.prop("disabled", false);
 					titular_filas.prop("disabled", false);
 					titular_columnas.addClass("tabla_tarifas__input__habilitado");
@@ -40,6 +43,7 @@
 					{
 						ev.preventDefault();
 						titular_columnas.prop("disabled", true);
+						listado_habit.prop("disabled", true);
 						datulis.prop("disabled", true);
 						titular_filas.prop("disabled", true);
 						titular_columnas.removeClass("tabla_tarifas__input__habilitado");
